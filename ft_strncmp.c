@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: side-oli <side-oli@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 13:35:40 by side-oli          #+#    #+#             */
-/*   Updated: 2026/04/23 13:35:49 by side-oli         ###   ########.fr       */
+/*   Created: 2026/04/23 15:23:48 by side-oli          #+#    #+#             */
+/*   Updated: 2026/04/23 15:24:02 by side-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	res;
-	int	sign;
-
-	res = 0;
-	sign = 1;
-	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+	if (n == 0)
+		return (0);
+	while (*s1 != '\0' && *s1 == *s2 && n > 1)
 	{
-		if (*nptr == '-')
-			sign = -sign;
-		nptr++;
+		s1++;
+		s2++;
+		n--;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		res = res * 10 + (*nptr - '0');
-		nptr++;
-	}
-	return (sign * res);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

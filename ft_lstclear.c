@@ -1,17 +1,28 @@
-void  ft_lstclear(t_list **lst, void (*del)(void*))
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: side-oli <side-oli@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/23 14:18:00 by side-oli          #+#    #+#             */
+/*   Updated: 2026/04/23 14:18:13 by side-oli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*node;
 	t_list	*tmp;
-	
-	if (!lst)
+
+	if (!lst || !del)
 		return ;
-	node = *lst;
-	while (node)
+	while (*lst)
 	{
-		tmp = node;
-		(*del)(node->content);
-		node = node->next;
-		free(tmp);
+		tmp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = tmp;
 	}
-	*lst = NULL;
 }

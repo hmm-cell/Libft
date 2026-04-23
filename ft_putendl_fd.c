@@ -1,5 +1,21 @@
-void  ft_putendl_fd(char *s, int fd)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: side-oli <side-oli@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/23 14:41:41 by side-oli          #+#    #+#             */
+/*   Updated: 2026/04/23 14:41:52 by side-oli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
 {
+	if (!s)
+		return ;
 	while (*s)
 	{
 		write(fd, s, 1);

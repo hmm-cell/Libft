@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: side-oli <side-oli@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 13:35:40 by side-oli          #+#    #+#             */
-/*   Updated: 2026/04/23 13:35:49 by side-oli         ###   ########.fr       */
+/*   Created: 2026/04/23 14:19:30 by side-oli          #+#    #+#             */
+/*   Updated: 2026/04/23 15:35:32 by side-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	int	res;
-	int	sign;
-
-	res = 0;
-	sign = 1;
-	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
-	{
-		if (*nptr == '-')
-			sign = -sign;
-		nptr++;
-	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		res = res * 10 + (*nptr - '0');
-		nptr++;
-	}
-	return (sign * res);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }

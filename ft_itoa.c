@@ -1,8 +1,22 @@
-int	num_size(int n)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: side-oli <side-oli@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/23 14:12:47 by side-oli          #+#    #+#             */
+/*   Updated: 2026/04/23 14:13:01 by side-oli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static int	num_size(int n)
 {
-	int	size;
+	int		size;
 	long	nbr;
-	
+
 	nbr = n;
 	size = 0;
 	if (nbr == 0)
@@ -20,12 +34,12 @@ int	num_size(int n)
 	return (size);
 }
 
-char  *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	int	len;
+	int		len;
 	long	nbr;
 	char	*s;
-	
+
 	nbr = n;
 	len = num_size(n);
 	s = (char *)malloc(len + 1);
@@ -39,7 +53,8 @@ char  *ft_itoa(int n)
 	if (nbr == 0)
 		s[0] = '0';
 	s[len--] = '\0';
-	while (nbr > 0) {
+	while (nbr > 0)
+	{
 		s[len--] = (nbr % 10) + '0';
 		nbr /= 10;
 	}

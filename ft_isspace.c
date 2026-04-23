@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: side-oli <side-oli@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 13:35:40 by side-oli          #+#    #+#             */
-/*   Updated: 2026/04/23 13:35:49 by side-oli         ###   ########.fr       */
+/*   Created: 2026/04/23 15:34:46 by side-oli          #+#    #+#             */
+/*   Updated: 2026/04/23 15:34:58 by side-oli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_isspace(int c)
 {
-	int	res;
-	int	sign;
-
-	res = 0;
-	sign = 1;
-	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
-	{
-		if (*nptr == '-')
-			sign = -sign;
-		nptr++;
-	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		res = res * 10 + (*nptr - '0');
-		nptr++;
-	}
-	return (sign * res);
+	return ((c >= 9 && c <= 13) || c == 32);
 }
